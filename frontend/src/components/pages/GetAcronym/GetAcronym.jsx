@@ -1,26 +1,48 @@
-import React, { useEffect } from "react";
-import Axios from "axios";
+import React, {  useState } from "react";
+import axios from "axios";
 
 const GetAcronym = () => {
-  useEffect(() => {
-    console.log("useEffect de getList");
-  }, []);
+  const [acronym, setAcronym] = useState({
+    abbreviation: "LGH",
+    meaning: "",
+  });
+
+  const submitted = (event) => {
+    event.preventDefault();
+
+    const url = `${process.env.REACT_APP_SERVER_URL}/acronym/${acronym.abbreviation}`;
+    console.log(url);
+    axios({
+      method: "GET",
+      url: url,
+      data: {},
+    })
+      .then((response) => {
+        console.log(response.data);
+        setAcronym({ ...acronym, meaning: response.data.acronym });
+      })
+      .then((error) => {
+        if (error) console.log("ERROR:", error);
+      });
+  };
 
   return (
     <React.Fragment>
       <h3>Get a specific Acronym</h3>
-      <form>
+      <form onSubmit={submitted}>
         <label>Acronym: </label>
-        <input type="text" />
-        <br />
-        <label>From:</label>
-        <input type="text" />
-        <br />
-        <label>To:</label>
-        <input type="text" />
+        <input
+          type="text"
+          value={acronym.abbreviation}
+          onChange={(e) =>
+            setAcronym({ ...acronym, abbreviation: e.target.value })
+          }
+        />
         <br />
         <input type="submit" value="search" />
       </form>
+      <p>{acronym.abbreviation}</p>
+      <p>{acronym.meaning}</p>
     </React.Fragment>
   );
 };

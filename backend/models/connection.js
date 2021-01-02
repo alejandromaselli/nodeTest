@@ -11,16 +11,17 @@ exports.connection = () => {
       useUnifiedTopology: true,
       useFindAndModify: false,
     },
-    () => console.log("db connected")
+    (err, result) => {
+      if (err) console.error("ERROR", err);
+      else console.log("DB Connected");
+    }
   );
 
   // Verifies if the database is empty, if so then it is populated with the data.json file
-
-  var find = acronymModel.find((err, resutl) => {
+  acronymModel.find((err, resutl) => {
     if (err) console.log(err);
     else if (resutl.length === 0) {
       data.map((item) => {
-        //console.log(Object.keys(item)[0], item[Object.keys(item)])
         var newAcronym = acronymModel({
           abbreviation: Object.keys(item)[0],
           meaning: item[Object.keys(item)],

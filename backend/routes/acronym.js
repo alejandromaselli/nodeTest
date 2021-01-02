@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
       const output = [],
         acronymsList = [];
       acronymModel.findOne({ abbreviation: search }, (err, result) => {
+        if (result === null) return res.json({ msg: "acronym doesnt exist" });
         const { abbreviation, meaning } = result;
         output.push({
           result: { abbreviation: abbreviation, meaning: meaning },
@@ -40,6 +41,7 @@ router.get("/", (req, res) => {
 
 router.get("/:acronym", (req, res) => {
   acronymModel.findOne({ abbreviation: req.params.acronym }, (err, item) => {
+    if (item === null) return res.json({ msg: "Error, acronym doesn't exist" });
     if (err || item.length === 0) res.json({ msg: "Error" });
     res.json({ acronym: item.meaning });
   });
@@ -47,8 +49,9 @@ router.get("/:acronym", (req, res) => {
 
 router.post("/", (req, res) => {
   const { abbreviation, meaning } = req.body;
+  if (!abbreviation || !meaning)
+    return res.json({ msg: "Falta algo revise sus parámetros" });
   acronymModel.findOne({ abbreviation: abbreviation }, (error, item) => {
-    // console.log("ITEM", item);
     if (error) res.json({ msg: "error" });
     if (item !== null) res.json({ msg: "Acronym alreaty exist" });
     else {
@@ -65,6 +68,7 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:acronym", (req, res) => {
+  console.log(req.body);
   const acronym = req.params.acronym;
   const substitution = req.body.update;
   acronymModel.findOneAndUpdate(
@@ -73,7 +77,7 @@ router.put("/:acronym", (req, res) => {
     (err, item) => {
       if (err) res.json({ msg: "error" });
       if (item !== null) res.json({ msg: "Acronym updates sucessfully" });
-      else res.json({ msg: "Acronym doesnt exist try again" });
+      else res.json({ error: "Acronym doesnt exist try again" });
     }
   );
 });

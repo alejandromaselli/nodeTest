@@ -24,7 +24,7 @@ function randomFiller(array, count, length) {
 
   if (innerArray.length < count) {
     var reference = Math.floor(Math.random() * length);
-    console.log(reference, ' ',count);
+    console.log(reference, " ", count);
     if (
       innerArray.includes(reference + 1) ||
       innerArray.includes(reference - 1)
