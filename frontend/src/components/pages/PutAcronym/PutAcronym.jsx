@@ -29,7 +29,7 @@ const PutAcronym = () => {
   return (
     <div>
       <React.Fragment>
-        <h3>Put an Acronym</h3>
+        <h3>PUT an Acronym</h3>
         <form onSubmit={submitted}>
           <label>Acronym: </label>
           <input

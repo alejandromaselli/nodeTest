@@ -84,7 +84,6 @@ router.put("/:acronym", (req, res) => {
 
 router.delete("/:acronym", (req, res) => {
   const acronym = req.params.acronym;
-  const substitution = req.body.update;
   acronymModel.findOneAndDelete({ abbreviation: acronym }, (err, item) => {
     if (err) res.json({ msg: "error" });
     if (item !== null) res.json({ msg: "Acronym deleted sucessfully" });
