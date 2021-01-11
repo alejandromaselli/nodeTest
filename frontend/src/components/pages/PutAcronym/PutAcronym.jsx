@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
 const PutAcronym = () => {
+  
+
   const [acronym, setAcronym] = useState({
     abbreviation: "abre",
     meaning: "mean",
@@ -21,6 +26,12 @@ const PutAcronym = () => {
     })
       .then((response) => {
         console.log(response.data);
+        if(response.data.error){
+          toast("Acronym doesn't exists")
+          console.log('error');
+        } else{
+          toast("sucess!")
+        }
       })
       .catch((error) => {
         if (error) console.error("ERROR", error);
@@ -29,7 +40,9 @@ const PutAcronym = () => {
   return (
     <div>
       <React.Fragment>
-        <h3>PUT an Acronym</h3>
+      <ToastContainer />
+
+      <h3>PUT an Acronym</h3>
         <form onSubmit={submitted}>
           <label>Acronym: </label>
           <input

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import { ToastContainer, toast } from 'react-toastify';
+  
+
 const DeleteAcronym = () => {
   const [acronym, setAcronym] = useState({
     abbreviation: "abre",
@@ -19,6 +22,9 @@ const DeleteAcronym = () => {
     })
       .then((response) => {
         console.log(response.data);
+        if(response.data.msg){
+          toast(response.data.msg)
+        }
       })
       .catch((error) => {
         if (error) console.error("ERROR", error);
@@ -27,6 +33,7 @@ const DeleteAcronym = () => {
   return (
     <div>
       <React.Fragment>
+      <ToastContainer/>
         <h3>DELETE an Acronym</h3>
         <form onSubmit={submitted}>
           <label>Acronym: </label>

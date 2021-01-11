@@ -1,11 +1,15 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const GetAcronym = () => {
+  const notify = () => toast("Error, acronym doesn't exist");
   const [acronym, setAcronym] = useState({
     abbreviation: "LGH",
     meaning: "",
   });
+  const [error, setError] = useState("");
 
   const submitted = (event) => {
     event.preventDefault();
@@ -20,6 +24,7 @@ const GetAcronym = () => {
       .then((response) => {
         console.log(response.data);
         setAcronym({ ...acronym, meaning: response.data.acronym });
+        if (response.data.msg === `Error, acronym doesn't exist`) notify();
       })
       .then((error) => {
         if (error) console.log("ERROR:", error);
@@ -28,6 +33,9 @@ const GetAcronym = () => {
 
   return (
     <React.Fragment>
+      <div>
+        <ToastContainer />
+      </div>
       <h3>Get a specific Acronym</h3>
       <form onSubmit={submitted}>
         <label>Acronym: </label>

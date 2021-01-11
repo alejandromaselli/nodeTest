@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const PostAcronym = () => {
   const [acronym, setAcronym] = useState({
     abbreviation: "",
@@ -19,11 +22,12 @@ const PostAcronym = () => {
         abbreviation: abbreviation,
         meaning: meaning,
       },
-    });
+    }).then(()=>toast('Acronym added successfully!'));
   };
 
   return (
     <React.Fragment>
+    <ToastContainer/>
       <h3>Post an Acronym</h3>
       <form onSubmit={submitted}>
         <label>Acronym: </label>
