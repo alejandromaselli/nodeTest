@@ -28,7 +28,10 @@ function App() {
         <Header className="header" />
         <Switch>
           <Route path="/" exact>
-            <h1>Inicio</h1>
+            <div className="container">
+              <h1>Hello! you are in the homepage</h1>
+              <h2>Select an option to interact with the API in the menu above &#9757;</h2>
+            </div>
           </Route>
           <Route path="/getList" exact>
             <div className="container">

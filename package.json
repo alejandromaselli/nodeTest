@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "client": "npm start --prefix frontend",
-    "backend":"npm start --prefix backend",
+    "backend": "npm start --prefix backend",
     "start": "concurrently \" npm run client \" \" npm run backend \"",
-    "install_client":"npm install --prefix frontend",
-    "install_server":"npm install --prefix backend",
-    "install_all":"concurrently \" npm run install_server \" \" npm run install_server \""
+    "install_client": "npm install --prefix frontend",
+    "install_server": "npm install --prefix backend",
+    "install_all": "concurrently \" npm run install_server \" \" npm run install_server \""
   },
   "keywords": [],
   "author": "",
@@ -17,7 +17,5 @@
   "devDependencies": {
     "concurrently": "^5.3.0"
   },
-  "dependencies": {
-    "all": "0.0.0"
-  }
+  "dependencies": {}
 }

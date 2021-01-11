@@ -41,8 +41,8 @@ const GetAcronym = () => {
         <br />
         <input type="submit" value="search" />
       </form>
-      <p>{acronym.abbreviation}</p>
-      <p>{acronym.meaning}</p>
+      <h3>Meaning:</h3>
+      <p className="match-container2">{acronym.meaning}</p>
     </React.Fragment>
   );
 };

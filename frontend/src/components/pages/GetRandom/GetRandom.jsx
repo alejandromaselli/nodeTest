@@ -27,21 +27,21 @@ const GetRandom = () => {
           onChange={(e) => setCount(e.target.value)}
           value={count}
         />
+        <br/>
         <input type="submit" value="search" />
-        <p>{count}</p>
       </form>
       {list.length === 0 ? (
         <p>Please enter a Number:</p>
       ) : (
         list.map((item) => {
           return (
-            <React.Fragment>
+            <div className="acronym-container">
               <h3>Abbreviation:</h3>
-              <p>{item.abbreviation}</p>
+              <p className="acronym-meaning">{item.abbreviation}</p>
               <h3>Meaning:</h3>
-              <p>{item.meaning}</p>
+              <p className="acronym-title">{item.meaning}</p>
               <br />
-            </React.Fragment>
+              </div>
           );
         })
       )}

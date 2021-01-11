@@ -48,7 +48,7 @@ const GetList = () => {
 
   return (
     <React.Fragment>
-      <h3>Get List of acronyms</h3>
+      <h3 className="container-title">Get List of acronyms</h3>
       <form onSubmit={submitted}>
         <label>Acronym: </label>
         <input
@@ -56,7 +56,6 @@ const GetList = () => {
           value={acronym}
           onChange={(e) => setText({ ...text, acronym: e.target.value })}
         />
-        <p>{acronym}</p>
         <br />
         <label>From:</label>
         <input
@@ -64,7 +63,6 @@ const GetList = () => {
           value={from}
           onChange={(e) => setText({ ...text, from: e.target.value })}
         />
-        <p>{from}</p>
         <br />
         <label>Limit:</label>
         <input
@@ -72,22 +70,28 @@ const GetList = () => {
           value={limit}
           onChange={(e) => setText({ ...text, to: e.target.value })}
         />
-        <p>{limit}</p>
         <br />
         <input type="submit" value="search" />
       </form>
       {gotResponse.abbreviation.length === 0 ? (
-        <React.Fragment>Rellene los formularios porfavor</React.Fragment>
+        <h3>Fill out the form please!</h3>
       ) : (
         <React.Fragment>
-          <p>Match:</p>
-          <p>{gotResponse.abbreviation}</p>
-          <p>{gotResponse.meaning}</p>
-          <p>Acronimos:</p>
+          <div className="match-container">
+            <h3>Match:</h3>
+            <p>{gotResponse.abbreviation}</p>
+            <h3>Meaning:</h3>
+            <p>{gotResponse.meaning}</p>
+          </div>
+          <h2>Acronyms:</h2>
           {gotResponse.list.map((item) => (
-            <div>
-              <p>{item.meaning}</p>
-              <p>{item.abbreviation}</p>
+            <div className="acronym-container">
+              <h3>Acronym:</h3>
+
+              <p className="acronym-meaning">{item.abbreviation}</p>
+              <h3>Meaning:</h3>
+
+              <p className="acronym-title">{item.meaning}</p>
             </div>
           ))}
         </React.Fragment>
