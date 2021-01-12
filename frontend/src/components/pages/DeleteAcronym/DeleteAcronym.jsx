@@ -10,7 +10,7 @@ const DeleteAcronym = () => {
   });
 
   const submitted = (event) => {
-    const { abbreviation, meaning } = acronym;
+    const { abbreviation } = acronym;
     event.preventDefault();
     const url = `${process.env.REACT_APP_SERVER_URL}/acronym/${abbreviation}`;
     axios({

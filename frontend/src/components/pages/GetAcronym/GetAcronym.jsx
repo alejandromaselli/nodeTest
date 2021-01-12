@@ -9,8 +9,6 @@ const GetAcronym = () => {
     abbreviation: "",
     meaning: "",
   });
-  const [error, setError] = useState("");
-
   const submitted = (event) => {
     event.preventDefault();
 

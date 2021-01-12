@@ -27,9 +27,8 @@ const GetList = () => {
     })
       .then((response) => {
         const [result, list] = response.data;
+        console.log(result);
         const { abbreviation, meaning } = response.data[0].result;
-
-
         setGotResponse({
           ...gotResponse,
           abbreviation: abbreviation,
@@ -64,7 +63,7 @@ const GetList = () => {
         <input
           type="text"
           value={limit}
-          onChange={(e) => setText({ ...text, to: e.target.value })}
+          onChange={(e) => setText({ ...text, limit: e.target.value })}
         />
         <br />
         <input type="submit" value="search" />
