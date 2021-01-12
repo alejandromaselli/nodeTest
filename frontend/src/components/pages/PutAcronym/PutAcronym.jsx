@@ -62,8 +62,6 @@ const PutAcronym = () => {
           <br />
           <input type="submit" value="Replace" />
         </form>
-        <p>Acronym: {acronym.abbreviation}</p>
-        <p>Meaning: {acronym.meaning}</p>
       </React.Fragment>
     </div>
   );
