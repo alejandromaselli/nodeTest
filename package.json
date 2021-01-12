@@ -9,7 +9,7 @@
     "start": "concurrently \" npm run client \" \" npm run backend \"",
     "install_client": "npm install --prefix frontend",
     "install_server": "npm install --prefix backend",
-    "install_all": "concurrently \" npm run install_server \" \" npm run install_server \""
+    "install_all": "cd frontend && npm i && cd ../backend && npm i && cd .. && npm start"
   },
   "keywords": [],
   "author": "",
