@@ -3,9 +3,9 @@ import axios from "axios";
 
 const GetList = () => {
   const [text, setText] = useState({
-    acronym: "LH6",
-    from: "50",
-    limit: "10",
+    acronym: "",
+    from: "",
+    limit: "",
   });
 
   const [gotResponse, setGotResponse] = useState({

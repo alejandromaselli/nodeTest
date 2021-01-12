@@ -28,7 +28,7 @@ const PostAcronym = () => {
   return (
     <React.Fragment>
     <ToastContainer/>
-      <h3>Post an Acronym</h3>
+      <h3 className="container-title">Post an Acronym</h3>
       <form onSubmit={submitted}>
         <label>Acronym: </label>
         <input
@@ -46,7 +46,7 @@ const PostAcronym = () => {
           value={acronym.meaning}
         />
         <br />
-        <input type="submit" value="search" />
+        <input type="submit" value="Post" />
       </form>
     </React.Fragment>
   );

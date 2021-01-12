@@ -19,7 +19,7 @@ const GetRandom = () => {
   };
   return (
     <React.Fragment>
-      <h3>Get a random acronyms</h3>
+      <h3 className="container-title">Get a random acronyms</h3>
       <form onSubmit={submitted}>
         <label>Count: </label>
         <input
@@ -28,7 +28,7 @@ const GetRandom = () => {
           value={count}
         />
         <br/>
-        <input type="submit" value="search" />
+        <input type="submit" value="Get" />
       </form>
       {list.length === 0 ? (
         <p>Please enter a Number:</p>

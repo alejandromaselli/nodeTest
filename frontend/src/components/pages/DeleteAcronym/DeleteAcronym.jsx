@@ -34,9 +34,9 @@ const DeleteAcronym = () => {
     <div>
       <React.Fragment>
       <ToastContainer/>
-        <h3>DELETE an Acronym</h3>
+        <h3 className="container-title">DELETE an Acronym</h3>
         <form onSubmit={submitted}>
-          <label>Acronym: </label>
+          <label>Acronym:</label>
           <input
             type="text"
             onChange={(e) =>
@@ -45,7 +45,7 @@ const DeleteAcronym = () => {
             value={acronym.abbreviation}
           />
           <br />
-          <input type="submit" value="DELETE" />
+          <input type="submit" value="Delete" />
         </form>
         <p>Acronym: {acronym.abbreviation}</p>
       </React.Fragment>

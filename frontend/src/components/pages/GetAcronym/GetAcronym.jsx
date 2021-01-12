@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 const GetAcronym = () => {
   const notify = () => toast("Error, acronym doesn't exist");
   const [acronym, setAcronym] = useState({
-    abbreviation: "LGH",
+    abbreviation: "",
     meaning: "",
   });
   const [error, setError] = useState("");
@@ -22,7 +22,6 @@ const GetAcronym = () => {
       data: {},
     })
       .then((response) => {
-        console.log(response.data);
         setAcronym({ ...acronym, meaning: response.data.acronym });
         if (response.data.msg === `Error, acronym doesn't exist`) notify();
       })
@@ -49,8 +48,14 @@ const GetAcronym = () => {
         <br />
         <input type="submit" value="search" />
       </form>
+      {acronym.meaning === "" ? (
+        <p>Please eneter the acronym</p>
+      ) : (
+        <>
       <h3>Meaning:</h3>
-      <p className="match-container2">{acronym.meaning}</p>
+        <p className="match-container2">{acronym.meaning}</p>
+     </>
+        )}
     </React.Fragment>
   );
 };

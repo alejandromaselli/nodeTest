@@ -42,7 +42,7 @@ const PutAcronym = () => {
       <React.Fragment>
       <ToastContainer />
 
-      <h3>PUT an Acronym</h3>
+      <h3 className="container-title">PUT an Acronym</h3>
         <form onSubmit={submitted}>
           <label>Acronym: </label>
           <input
@@ -62,7 +62,7 @@ const PutAcronym = () => {
             value={acronym.meaning}
           />
           <br />
-          <input type="submit" value="search" />
+          <input type="submit" value="Replace" />
         </form>
         <p>Acronym: {acronym.abbreviation}</p>
         <p>Meaning: {acronym.meaning}</p>
