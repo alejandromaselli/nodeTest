@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { findOneAndReplace } = require("../models/acronymModel");
 const acronymModel = require("../models/acronymModel");
 
 router.get("/", (req, res) => {
@@ -68,16 +69,16 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:acronym", (req, res) => {
-  console.log(req.body);
   const acronym = req.params.acronym;
-  const substitution = req.body.update;
+  const substitution = req.body.meaning;
   acronymModel.findOneAndUpdate(
     { abbreviation: acronym },
     { meaning: substitution },
     (err, item) => {
-      if (err) res.json({ msg: "error" });
-      if (item !== null) res.json({ msg: "Acronym updates sucessfully" });
-      else res.json({ error: "Acronym doesnt exist try again" });
+     if (err) res.json({ msg: "error" });
+      if (item === null) res.json({ error: "Acronym doesnt exist try again" });
+      if (item !== null) 
+       res.json({ msg: "Acronym updates sucessfully" });
     }
   );
 });

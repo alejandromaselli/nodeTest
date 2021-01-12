@@ -15,7 +15,6 @@ const GetAcronym = () => {
     event.preventDefault();
 
     const url = `${process.env.REACT_APP_SERVER_URL}/acronym/${acronym.abbreviation}`;
-    console.log(url);
     axios({
       method: "GET",
       url: url,
@@ -23,7 +22,8 @@ const GetAcronym = () => {
     })
       .then((response) => {
         setAcronym({ ...acronym, meaning: response.data.acronym });
-        if (response.data.msg === `Error, acronym doesn't exist`) notify();
+        if(acronym.abbreviation === '') toast('enter something please')
+        else if (response.data.msg === `Error, acronym doesn't exist`) notify();
       })
       .then((error) => {
         if (error) console.log("ERROR:", error);
@@ -35,7 +35,7 @@ const GetAcronym = () => {
       <div>
         <ToastContainer />
       </div>
-      <h3>Get a specific Acronym</h3>
+      <h3 className="container-title">Get a specific Acronym</h3>
       <form onSubmit={submitted}>
         <label>Acronym: </label>
         <input
@@ -48,14 +48,14 @@ const GetAcronym = () => {
         <br />
         <input type="submit" value="search" />
       </form>
-      {acronym.meaning === "" ? (
+      {acronym.meaning === "" || acronym.meaning === undefined ? (
         <p>Please eneter the acronym</p>
       ) : (
         <>
-      <h3>Meaning:</h3>
-        <p className="match-container2">{acronym.meaning}</p>
-     </>
-        )}
+          <h3>Meaning:</h3>
+           <p className="match-container2">{acronym.meaning}</p>
+        </>
+      )}
     </React.Fragment>
   );
 };

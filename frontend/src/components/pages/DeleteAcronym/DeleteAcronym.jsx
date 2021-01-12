@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const DeleteAcronym = () => {
   const [acronym, setAcronym] = useState({
-    abbreviation: "abre",
+    abbreviation: "",
   });
 
   const submitted = (event) => {
@@ -21,7 +21,6 @@ const DeleteAcronym = () => {
       },
     })
       .then((response) => {
-        console.log(response.data);
         if(response.data.msg){
           toast(response.data.msg)
         }

@@ -20,7 +20,6 @@ const GetList = () => {
     event.preventDefault();
 
     const url = `${process.env.REACT_APP_SERVER_URL}/acronym?from=${from}&limit=${limit}&search=${acronym}`;
-    console.log(url);
     axios({
       method: "GET",
       url: url,
@@ -30,8 +29,6 @@ const GetList = () => {
         const [result, list] = response.data;
         const { abbreviation, meaning } = response.data[0].result;
 
-        //console.log("response", response.data[0].result);
-        //console.log("result", list.list);
 
         setGotResponse({
           ...gotResponse,
@@ -39,7 +36,6 @@ const GetList = () => {
           meaning: meaning,
           list: list.list,
         });
-        console.log(gotResponse);
       })
       .then((error) => {
         if (error) console.log("ERROR:", error);

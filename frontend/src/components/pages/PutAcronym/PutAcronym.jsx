@@ -8,8 +8,8 @@ const PutAcronym = () => {
   
 
   const [acronym, setAcronym] = useState({
-    abbreviation: "abre",
-    meaning: "mean",
+    abbreviation: "",
+    meaning: "",
   });
 
   const submitted = (event) => {
@@ -25,12 +25,10 @@ const PutAcronym = () => {
       },
     })
       .then((response) => {
-        console.log(response.data);
         if(response.data.error){
           toast("Acronym doesn't exists")
-          console.log('error');
         } else{
-          toast("sucess!")
+          toast("Acronym updated sucessfully!")
         }
       })
       .catch((error) => {

@@ -14,7 +14,6 @@ const PostAcronym = () => {
     const { abbreviation, meaning } = acronym;
     event.preventDefault();
     const url = `${process.env.REACT_APP_SERVER_URL}/acronym`;
-    console.log(meaning);
     axios({
       method: "POST",
       url: url,

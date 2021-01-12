@@ -3,11 +3,10 @@ import axios from "axios";
 
 const GetRandom = () => {
   const [list, setList] = useState([]);
-  const [count, setCount] = useState(10);
+  const [count, setCount] = useState();
   const submitted = (event) => {
     event.preventDefault();
     const url = `${process.env.REACT_APP_SERVER_URL}/random/${count}`;
-    console.log(url);
     axios({
       method: "GET",
       url: url,
